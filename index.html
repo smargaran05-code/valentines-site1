@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <title>С Днём Святого Валентина 💖</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
@@ -13,35 +15,77 @@ body {
     overflow-x: hidden;
 }
 
+/* Плавное появление */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
 h1 {
     margin-top: 50px;
     color: #d63384;
-    font-size: 40px;
+    font-size: 42px;
 }
 
 p {
     font-size: 20px;
     color: #555;
-    max-width: 600px;
+    max-width: 700px;
     margin: 20px auto;
 }
 
-.photo {
-    margin: 30px auto;
+/* Фото в ряд */
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 40px;
 }
 
-.photo img {
-    width: 300px;
+.gallery img {
+    width: 250px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
 }
 
-video {
-    margin-top: 20px;
-    border-radius: 20px;
-    width: 320px;
+.gallery img:hover {
+    transform: scale(1.05);
 }
 
+/* Кнопка */
+.love-button {
+    background: #ff85a2;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: 0.3s;
+}
+
+.love-button:hover {
+    background: #ff5c8a;
+}
+
+/* Сообщение */
+.love-message {
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    color: #d63384;
+    margin-top: 30px;
+    display: none;
+    animation: fadeIn 2s ease forwards;
+}
+
+/* Сердечки */
 .heart {
     position: fixed;
     top: -10px;
@@ -50,31 +94,39 @@ video {
 }
 
 @keyframes fall {
-    to {
-        transform: translateY(110vh);
-    }
+    to { transform: translateY(110vh); }
 }
 </style>
 </head>
 
 <body>
 
-<h1>С Днём Святого Валентина 💕</h1>
+<h1 class="fade-in">С Днём Святого Валентина 💕</h1>
 
-<p>
+<p class="fade-in">
 Любимый, спасибо тебе за каждый момент рядом со мной.  
 Ты — моё счастье, моя нежность и моя любовь ❤️
 </p>
 
-<div class="photo">
-    <img src="photo.jpg" alt="Наша фотография">
+<div class="gallery fade-in">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo4.jpg">
+    <img src="photo5.jpg">
 </div>
 
-<video controls>
-    <source src="video.mp4" type="video/mp4">
-</video>
+<button class="love-button" onclick="showLove()">Нажми на меня 💌</button>
+
+<div id="loveText" class="love-message">
+Я тебя люблю ❤️
+</div>
 
 <script>
+function showLove() {
+    document.getElementById("loveText").style.display = "block";
+}
+
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
