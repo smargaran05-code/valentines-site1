@@ -24,7 +24,7 @@ body {
 h1 {
     font-size: 50px;
     color: #d63384;
-    animation: fadeDown 2s ease forwards;
+    animation: fadeDown 1.5s ease forwards;
 }
 
 /* Текст */
@@ -34,21 +34,20 @@ p {
     max-width: 720px;
     margin: 25px auto;
     opacity: 0;
-    animation: fadeUp 2s ease forwards;
+    transform: translateY(20px);
+    animation: fadeUp 1.5s ease forwards;
 }
 
-p:nth-of-type(1) { animation-delay: 0.4s; }
-p:nth-of-type(2) { animation-delay: 0.8s; }
-p:nth-of-type(3) { animation-delay: 1.2s; }
+p:nth-of-type(1) { animation-delay: 0.3s; }
+p:nth-of-type(2) { animation-delay: 0.6s; }
+p:nth-of-type(3) { animation-delay: 0.9s; }
 
-/* Анимации текста */
+/* Анимации */
 @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-40px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -56,6 +55,7 @@ p:nth-of-type(3) { animation-delay: 1.2s; }
 .gallery {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 30px;
     margin: 60px 20px;
 }
@@ -69,7 +69,6 @@ p:nth-of-type(3) { animation-delay: 1.2s; }
     animation: float 6s ease-in-out infinite;
 }
 
-/* Плавание фото */
 .gallery img:nth-child(odd) {
     animation-duration: 7s;
 }
@@ -105,7 +104,7 @@ p:nth-of-type(3) { animation-delay: 1.2s; }
         0 0 90px rgba(255, 150, 190, 0.5);
 }
 
-/* Сообщение */
+/* Сообщение любви */
 .love-message {
     font-family: 'Pacifico', cursive;
     font-size: 62px;
@@ -152,11 +151,11 @@ p:nth-of-type(3) { animation-delay: 1.2s; }
 </p>
 
 <div class="gallery">
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
-    <img src="photo4.jpg">
-    <img src="photo5.jpg">
+    <img src="photo1.jpg" alt="Фото 1">
+    <img src="photo2.jpg" alt="Фото 2">
+    <img src="photo3.jpg" alt="Фото 3">
+    <img src="photo4.jpg" alt="Фото 4">
+    <img src="photo5.jpg" alt="Фото 5">
 </div>
 
 <button class="love-button" onclick="showLove()">Нажми на меня 💌</button>
@@ -180,10 +179,11 @@ function createHeart() {
     heart.innerHTML = "💖";
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.fontSize = Math.random() * 20 + 20 + "px";
-    heart.style.animationDuration = Math.random() * 4 + 3 + "s";
+    heart.style.animationDuration = (Math.random() * 4 + 3) + "s";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 7000);
 }
+
 setInterval(createHeart, 350);
 </script>
 
