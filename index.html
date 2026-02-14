@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>С Днём Святого Валентина 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+h1 {
+    margin-top: 50px;
+    color: #d63384;
+    font-size: 40px;
+}
+
+p {
+    font-size: 20px;
+    color: #555;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.photo {
+    margin: 30px auto;
+}
+
+.photo img {
+    width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+video {
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 320px;
+}
+
+.heart {
+    position: fixed;
+    top: -10px;
+    color: pink;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>С Днём Святого Валентина 💕</h1>
+
+<p>
+Любимый, спасибо тебе за каждый момент рядом со мной.  
+Ты — моё счастье, моя нежность и моя любовь ❤️
+</p>
+
+<div class="photo">
+    <img src="photo.jpg" alt="Наша фотография">
+</div>
+
+<video controls>
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
